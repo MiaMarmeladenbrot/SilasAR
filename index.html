@@ -2,7 +2,6 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
@@ -14,29 +13,9 @@
       device-orientation-permission-ui="enabled: false"
     >
       <a-assets>
-        <a-asset-item
-          id="bearModel"
-          src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/band-example/bear/scene.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="raccoonModel"
-          src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/band-example/raccoon/scene.gltf"
-        ></a-asset-item>
-
-        <audio id="ak" autoplay loop="true" src="/videos/1ak.ogg" crossorigin="anonymous"></audio>
         <video
-          id="hannah"
-          autoplay
-          loop="true"
-          src="videos/2Hannah.m4a"
-          crossorigin="anonymous"
-          playsinline
-        ></video>
-        <video
-          id="matthias"
-          autoplay
-          loop="true"
-          src="videos/3Matthias.m4a"
+          id="corrells1"
+          src="/videos/4Corrells1.mp4"
           crossorigin="anonymous"
           playsinline
         ></video>
@@ -44,27 +23,28 @@
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- bear image -->
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model
-          rotation="0 0 0 "
-          position="0 -0.25 0"
-          scale="0.05 0.05 0.05"
-          src="#bearModel"
-          animation-mixer
-        />
-      </a-entity>
-
-      <!-- Racoon image -->
+      <!-- Corrells 1 -->
       <a-entity mindar-image-target="targetIndex: 1">
-        <a-gltf-model
-          rotation="0 0 0 "
-          position="0 -0.25 0"
-          scale="0.05 0.05 0.05"
-          src="#raccoonModel"
-          animation-mixer
-        />
+        <a-video id="videoPlane" position="0 0 0" width="2" height="1" src="#corrells1"></a-video>
       </a-entity>
     </a-scene>
+
+    <script>
+      const videoEl = document.querySelector("#corrells1");
+      const videoPlane = document.querySelector("#videoPlane");
+      const targetEntity = document.querySelector('[mindar-image-target="targetIndex: 1"]');
+
+      targetEntity.addEventListener("targetFound", () => {
+        console.log("Target 1 found: Playing video...");
+        videoEl.play();
+      });
+
+      targetEntity.addEventListener("targetLost", () => {
+        console.log("Target 1 lost: Pausing video...");
+        videoEl.pause();
+      });
+
+      videoEl.pause();
+    </script>
   </body>
 </html>
