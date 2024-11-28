@@ -13,6 +13,8 @@
       device-orientation-permission-ui="enabled: false"
     >
       <a-assets>
+        <audio id="ak" src="/videos/1ak.ogg" crossorigin="anonymous"></audio>
+
         <video
           id="corrells1"
           src="/videos/4Corrells1.mp4"
@@ -23,16 +25,37 @@
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
+      <!-- AK -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-image src="/img/audio.jpg" position="0 0 0" scale="1 1 1"> </a-image>
+      </a-entity>
+
       <!-- Corrells 1 -->
-      <a-entity mindar-image-target="targetIndex: 1">
+      <a-entity mindar-image-target="targetIndex: 3">
         <a-video id="videoPlane" position="0 0 0" width="2" height="1" src="#corrells1"></a-video>
       </a-entity>
     </a-scene>
 
     <script>
+      // Audio Logic
+      const audioEl = document.querySelector("#ak"); // Audioquelle
+      const targetEntity0 = document.querySelector('[mindar-image-target="targetIndex: 0"]'); // Target für Audio
+
+      targetEntity0.addEventListener("targetFound", () => {
+        console.log("Target 0 found: Playing audio...");
+        audioEl.play();
+      });
+
+      targetEntity0.addEventListener("targetLost", () => {
+        console.log("Target 0 lost: Stopping audio...");
+        audioEl.pause();
+        audioEl.currentTime = 0;
+      });
+
+      // Video Logic
       const videoEl = document.querySelector("#corrells1");
       const videoPlane = document.querySelector("#videoPlane");
-      const targetEntity = document.querySelector('[mindar-image-target="targetIndex: 1"]');
+      const targetEntity = document.querySelector('[mindar-image-target="targetIndex: 3"]');
 
       targetEntity.addEventListener("targetFound", () => {
         console.log("Target 1 found: Playing video...");
