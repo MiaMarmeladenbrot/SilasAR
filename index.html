@@ -14,6 +14,8 @@
     >
       <a-assets>
         <audio id="ak" src="/videos/1ak.ogg" crossorigin="anonymous"></audio>
+        <audio id="hannah" src="/videos/2Hannah.mp3" crossorigin="anonymous"></audio>
+        <audio id="matthias" src="/videos/3Matthias.mp3" crossorigin="anonymous"></audio>
 
         <video
           id="corrells1"
@@ -21,53 +23,119 @@
           crossorigin="anonymous"
           playsinline
         ></video>
+
+        <video
+          id="corrells2"
+          src="/videos/5Corrells2.mp4"
+          crossorigin="anonymous"
+          playsinline
+        ></video>
+
+        <video id="gionas" src="/videos/6Gionas.mp4" crossorigin="anonymous" playsinline></video>
+
+        <video id="markus" src="/videos/7markus.mp4" crossorigin="anonymous" playsinline></video>
+
+        <video
+          id="jennax"
+          src="/videos/8Jennifer und Max  klein.mov"
+          crossorigin="anonymous"
+          playsinline
+        ></video>
+
+        <video id="silwe" src="/videos/9SilWe.mp4" crossorigin="anonymous" playsinline></video>
+        <video id="stefan" src="/videos/10Stefan.mp4" crossorigin="anonymous" playsinline></video>
+        <video id="theresa" src="/videos/11Theresa.mp4" crossorigin="anonymous" playsinline></video>
+        <video
+          id="aron"
+          src="/videos/12Aron Jakob Sophia klein.mp4"
+          crossorigin="anonymous"
+          playsinline
+        ></video>
+        <video id="maxi" src="/videos/13Maxi.mp4" crossorigin="anonymous" playsinline></video>
+        <video id="normi" src="/videos/14Normi.mp4" crossorigin="anonymous" playsinline></video>
+
+        <!-- VIDEO FEHLT NOCH -->
+        <video id="mia" src="" crossorigin="anonymous" playsinline></video>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <!-- AK -->
-      <a-entity mindar-image-target="targetIndex: 0">
+      <a-entity mindar-image-target="targetIndex: 0" data-media="ak">
+        <a-image src="/img/audio.jpg" position="0 0 0" scale="1 1 1"> </a-image>
+      </a-entity>
+
+      <!-- Hannah -->
+      <a-entity mindar-image-target="targetIndex: 1" data-media="hannah">
+        <a-image src="/img/audio.jpg" position="0 0 0" scale="1 1 1"> </a-image>
+      </a-entity>
+
+      <!-- Matthias -->
+      <!-- geht noch nicht! -->
+      <a-entity mindar-image-target="targetIndex: 2" data-media="matthias">
         <a-image src="/img/audio.jpg" position="0 0 0" scale="1 1 1"> </a-image>
       </a-entity>
 
       <!-- Corrells 1 -->
-      <a-entity mindar-image-target="targetIndex: 3">
-        <a-video id="videoPlane" position="0 0 0" width="2" height="1" src="#corrells1"></a-video>
+      <a-entity mindar-image-target="targetIndex: 3" data-media="corrells1">
+        <a-video id="videoPlane" position="0 0 0" src="#corrells1"></a-video>
+      </a-entity>
+
+      <!-- Corrells 2 -->
+      <a-entity mindar-image-target="targetIndex: 4" data-media="corrells2">
+        <a-video id="videoPlane" position="0 0 0" src="#corrells2"></a-video>
+      </a-entity>
+
+      <!-- Gionas -->
+      <a-entity mindar-image-target="targetIndex: 5" data-media="gionas">
+        <a-video id="videoPlane" position="0 0 0" src="#gionas"></a-video>
+      </a-entity>
+
+      <!-- Markus -->
+      <a-entity mindar-image-target="targetIndex: 6" data-media="markus">
+        <a-video id="videoPlane" position="0 0 0" src="#markus"></a-video>
+      </a-entity>
+
+      <!-- Jennax -->
+      <a-entity mindar-image-target="targetIndex: 7" data-media="jennax">
+        <a-video id="videoPlane" position="0 0 0" src="#jennax"></a-video>
+      </a-entity>
+
+      <!-- SilWe -->
+      <a-entity mindar-image-target="targetIndex: 8" data-media="silwe">
+        <a-video id="videoPlane" position="0 0 0" src="#silwe"></a-video>
+      </a-entity>
+
+      <!-- Stefan -->
+      <a-entity mindar-image-target="targetIndex: 9" data-media="stefan">
+        <a-video id="videoPlane" position="0 0 0" src="#stefan"></a-video>
+      </a-entity>
+
+      <!-- Theresa -->
+      <a-entity mindar-image-target="targetIndex: 10" data-media="theresa">
+        <a-video id="videoPlane" position="0 0 0" src="#theresa"></a-video>
+      </a-entity>
+
+      <!-- Aron und Co -->
+      <a-entity mindar-image-target="targetIndex: 11" data-media="aron">
+        <a-video id="videoPlane" position="0 0 0" src="#aron"></a-video>
+      </a-entity>
+
+      <!-- Maxi -->
+      <a-entity mindar-image-target="targetIndex: 12" data-media="maxi">
+        <a-video id="videoPlane" position="0 0 0" src="#maxi"></a-video>
+      </a-entity>
+
+      <!-- Normi -->
+      <a-entity mindar-image-target="targetIndex: 13" data-media="normi">
+        <a-video id="videoPlane" position="0 0 0" src="#normi"></a-video>
+      </a-entity>
+
+      <!-- Mia -->
+      <a-entity mindar-image-target="targetIndex: 14" data-media="mia">
+        <a-video id="videoPlane" position="0 0 0" src="#mia"></a-video>
       </a-entity>
     </a-scene>
-
-    <script>
-      // Audio Logic
-      const audioEl = document.querySelector("#ak"); // Audioquelle
-      const targetEntity0 = document.querySelector('[mindar-image-target="targetIndex: 0"]'); // Target für Audio
-
-      targetEntity0.addEventListener("targetFound", () => {
-        console.log("Target 0 found: Playing audio...");
-        audioEl.play();
-      });
-
-      targetEntity0.addEventListener("targetLost", () => {
-        console.log("Target 0 lost: Stopping audio...");
-        audioEl.pause();
-        audioEl.currentTime = 0;
-      });
-
-      // Video Logic
-      const videoEl = document.querySelector("#corrells1");
-      const videoPlane = document.querySelector("#videoPlane");
-      const targetEntity = document.querySelector('[mindar-image-target="targetIndex: 3"]');
-
-      targetEntity.addEventListener("targetFound", () => {
-        console.log("Target 1 found: Playing video...");
-        videoEl.play();
-      });
-
-      targetEntity.addEventListener("targetLost", () => {
-        console.log("Target 1 lost: Pausing video...");
-        videoEl.pause();
-      });
-
-      videoEl.pause();
-    </script>
+    <script src="/main.js"></script>
   </body>
 </html>
