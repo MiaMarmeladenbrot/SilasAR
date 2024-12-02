@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.href.startsWith("https://miamarmeladenbrot.github.io/SilasAR")) {
-    window.location.href = "https://silas-ar.vercel.app/";
+    setTimeout(function () {
+      window.location.href = "https://silas-ar.vercel.app/";
+    }, 100);
   }
 });
 
