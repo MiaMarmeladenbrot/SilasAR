@@ -1,7 +1,3 @@
-if (window.location.href === "https://miamarmeladenbrot.github.io/SilasAR/") {
-  window.location.href = "https://silas-ar.vercel.app/";
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const targets = document.querySelectorAll("[mindar-image-target]");
 
