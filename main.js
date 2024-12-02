@@ -1,9 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.href.startsWith("https://miamarmeladenbrot.github.io/SilasAR/")) {
-    window.location.replace("https://silas-ar.vercel.app/");
-    return;
-  }
-
   const targets = document.querySelectorAll("[mindar-image-target]");
 
   targets.forEach((target) => {
